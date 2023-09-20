@@ -87,7 +87,7 @@ def signout(request):
 
 
 def profile(request, id):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.username==id:
 
         # User = get_user_model()
         # users = User.objects.get(username=id)
@@ -103,6 +103,14 @@ def profile(request, id):
         }
 
         return render(request, 'profile.html', data)
+    
+    elif request.user.is_authenticated and request.user.username!=id:
+        query1 = f"SELECT * FROM authentication_detail where username='{id}';"
+        data1 = detail.objects.raw(query1)
+        data = {
+            'details': data1,
+        }
+        return render(request,'profile.html',data)
     else:
         return redirect('signin')
 
