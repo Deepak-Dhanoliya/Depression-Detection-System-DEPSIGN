@@ -89,10 +89,7 @@ def signout(request):
 def profile(request, id):
     if request.user.is_authenticated and request.user.username==id:
 
-        # User = get_user_model()
-        # users = User.objects.get(username=id)
-        # print(users)
-        ans = 'qwer'
+        
         query1 = f"SELECT * FROM authentication_detail where username='{id}';"
         data1 = detail.objects.raw(query1)
         query2 = f"SELECT * FROM authentication_answer where username='{id}' ORDER BY id DESC;"
@@ -116,49 +113,60 @@ def profile(request, id):
 
 
 def quiz(request):
-    # try:
-    if request.method == "POST":
-        question1 = int(request.POST.get('question1'))
-        question2 = int(request.POST.get('question2'))
-        question3 = int(request.POST.get('question3'))
-        question4 = int(request.POST.get('question4'))
-        question5 = int(request.POST.get('question5'))
-        question6 = int(request.POST.get('question6'))
-        question7 = int(request.POST.get('question7'))
-        question8 = int(request.POST.get('question8'))
-        question9 = int(request.POST.get('question9'))
-        question10 = int(request.POST.get('question10'))
-        values = [question1, question2, question3, question4, question5,
-                  question6, question7, question8, question9, question10]
+    try:
+        if request.method == "POST":
+            question1 = int(request.POST.get('question1'))
+            question2 = int(request.POST.get('question2'))
+            question3 = int(request.POST.get('question3'))
+            question4 = int(request.POST.get('question4'))
+            question5 = int(request.POST.get('question5'))
+            question6 = int(request.POST.get('question6'))
+            question7 = int(request.POST.get('question7'))
+            question8 = int(request.POST.get('question8'))
+            question9 = int(request.POST.get('question9'))
+            question10 = int(request.POST.get('question10'))
+            values = [question1, question2, question3, question4, question5,
+                    question6, question7, question8, question9, question10]
 
-        username = request.user.username
-        # print(username, 1, 2)
+            username = request.user.username
+            # print(username, 1, 2)
 
-        model_ = Model()
-        classifier = model_.svm_classifier()
-        prediction = classifier.predict([values])
-        # print(prediction[0])
-        if prediction[0] == 0:
-            result = 'No Depression'
-        if prediction[0] == 1:
-            result = 'Mild Depression'
-        if prediction[0] == 2:
-            result = 'Moderate Depression'
-        if prediction[0] == 3:
-            result = 'Moderately severe Depression'
-        if prediction[0] == 4:
-            result = 'Severe Depression'
+            model_ = Model()
+            classifier = model_.svm_classifier()
+            prediction = classifier.predict([values])
+            # print(prediction[0])
+            if prediction[0] == 0:
+                result = 'No Depression'
+            if prediction[0] == 1:
+                result = 'Mild Depression'
+            if prediction[0] == 2:
+                result = 'Moderate Depression'
+            if prediction[0] == 3:
+                result = 'Moderately severe Depression'
+            if prediction[0] == 4:
+                result = 'Severe Depression'
 
-        data = answer(username=username, answer1=question1+1, answer2=question2+1, answer3=question3+1, answer4=question4+1, answer5=question5+1,
-                      answer6=question6+1, answer7=question7+1, answer8=question8+1, answer9=question9+1, answer10=question10+1, date=datetime.now(), result=result)
-        data.save()
-        print(values)
-        print(result)
+            data = answer(username=username, answer1=question1+1, answer2=question2+1, answer3=question3+1, answer4=question4+1, answer5=question5+1,
+                        answer6=question6+1, answer7=question7+1, answer8=question8+1, answer9=question9+1, answer10=question10+1, date=datetime.now(), result=result)
+            data.save()
 
-        return redirect('home')
+            query = "SELECT 'id','questions' FROM authentication_question ORDER BY id;"
+            data1 = question.objects.all()
+            totalscore=sum(values)
+            last=values.pop()
+            mylist=zip(data1,values)
+            
+            data={
+                'answers':result,
+                'last':last,
+                'questions':mylist,
+                'score':totalscore
+            }
 
-    # except:
-    #     return redirect('quiz')
+            return render(request,'result.html',data)
+
+    except:
+        return redirect('quiz')
 
     if request.user.is_authenticated:
         query = "SELECT 'id','questions' FROM authentication_question ORDER BY id;"
