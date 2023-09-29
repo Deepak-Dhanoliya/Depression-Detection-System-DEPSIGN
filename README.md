@@ -59,7 +59,7 @@ A web application built using Django and Python for assessing depression levels 
 * Take the depression assessment quiz by answering the questions honestly.
 * Receive your depression assessment result and follow the provided recommendations and precautions.
 
-## Future-Enhancements
+## Future Enhancements
 
 * Add anxiety assessment quiz.
 * Incorporate addiction assessment.
