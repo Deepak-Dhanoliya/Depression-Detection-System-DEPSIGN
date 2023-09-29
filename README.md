@@ -4,7 +4,7 @@
 
 ## Description
 
-A web application built using Django and Python for assessing depression levels in users through a series of questions and providing recommendations. This system also aims to incorporate tweet-based analysis for depression detection and expand into assessing other mental health conditions like anxiety and addiction.
+A web application built using Django and Python for assessing depression levels in users through a series of questions and providing recommendations. This system also aims to expand into assessing other mental health conditions like anxiety and addiction through quiz-based tests.
 
 ## Table of Contents
 
@@ -53,6 +53,19 @@ A web application built using Django and Python for assessing depression levels 
    python manage.py runserver
    ```
 7. Access the application in your web browser at http://localhost:8000/.
+
+## Usage
+
+* Register or log in to your account.
+* Take the depression assessment quiz by answering the questions honestly.
+* Receive your depression assessment result and follow the provided recommendations and precautions.
+
+## Future Enhancements
+
+* Add anxiety assessment quiz.
+* Incorporate addiction assessment.
+* Expand the application to provide a comprehensive mental health assessment through various quizzes.
+* Improve the accuracy and depth of the quiz-based assessments.
 
 
 
