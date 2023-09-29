@@ -27,7 +27,7 @@ A web application built using Django and Python for assessing depression levels 
 
 1. Clone the repository:
    ```
-   git clone [https://github.com/yourusername/depression-detection-system.git](https://github.com/Deepak-Dhanoliya/Depression-Detection-System-DEPSIGN.git)
+   git clone https://github.com/Deepak-Dhanoliya/Depression-Detection-System-DEPSIGN.git
    ```
 2. Change directory to the project folder:
    ```
