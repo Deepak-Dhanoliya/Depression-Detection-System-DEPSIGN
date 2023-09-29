@@ -164,6 +164,7 @@ def quiz(request):
             }
 
             return render(request,'result.html',data)
+        
 
     except:
         return redirect('quiz')
