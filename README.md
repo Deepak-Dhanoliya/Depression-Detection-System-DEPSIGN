@@ -27,25 +27,31 @@ A web application built using Django and Python for assessing depression levels 
 ## Installation
 
 1. Clone the repository:
-   ```bash
+   ```
    git clone https://github.com/yourusername/depression-detection-system.git
+   ```
 2. Change directory to the project folder:
-   '''bash
+   ```
    cd depression-detection-system
+   ```
 3. Create a virtual environment and activate it:
-   '''bash
+   ```
    python -m venv venv
    source venv/bin/activate
+   ```
 4. Install project dependencies:
-   '''bash
+   ```
    pip install -r requirements.txt
+   ```
 5. Migrate the database:
-   '''bash
+   ```
    python manage.py makemigrations
    python manage.py migrate
+   ```
 6. Start the Django development server:
-   '''bash
+   ```
    python manage.py runserver
+   ```
 7. Access the application in your web browser at http://localhost:8000/.
 
 
