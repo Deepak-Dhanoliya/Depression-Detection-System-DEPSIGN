@@ -29,29 +29,25 @@ A web application built using Django and Python for assessing depression levels 
    ```
    git clone https://github.com/Deepak-Dhanoliya/Depression-Detection-System-DEPSIGN.git
    ```
-2. Change directory to the project folder:
-   ```
-   cd Depression-Detection-System-DEPSIGN
-   ```
-3. Create a virtual environment and activate it:
+2. Create a virtual environment and activate it:
    ```
    python -m venv venv
    source venv/bin/activate
    ```
-4. Install project dependencies:
+3. Install project dependencies:
    ```
    pip install -r requirements.txt
    ```
-5. Migrate the database:
+4. Migrate the database:
    ```
    python manage.py makemigrations
    python manage.py migrate
    ```
-6. Start the Django development server:
+5. Start the Django development server:
    ```
    python manage.py runserver
    ```
-7. Access the application in your web browser at http://localhost:8000/.
+6. Access the application in your web browser at http://localhost:8000/.
 
 ## Usage
 
